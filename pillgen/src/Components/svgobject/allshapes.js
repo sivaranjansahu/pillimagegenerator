@@ -1,10 +1,11 @@
 import React from 'react'
 
-import Roundshape from './roundShape';
-import CapsuleShape from './capsuleShape';
-import RectangularShape from './rectangularShape';
-import OvalShape from './ovalShape';
+// import Roundshape from './roundShape';
+// import CapsuleShape from './capsuleShape';
+// import RectangularShape from './rectangularShape';
+// import OvalShape from './ovalShape';
 import Textcomponent from '../TextComponent/textcomponent'
+import Svgshape from '../svgobject/svgobject'
 
 
 
@@ -14,28 +15,32 @@ const allshapes = (props) => {
     //let randomTexture=Math.floor(Math.random()*5);
     let randomUrl = "/assets/textures/" + Math.floor(Math.random() * 14) + ".png"
     //randomUrl="/assets/textures/6.png"
-
-    let selectedShape = '';
-    console.log(props.shape)
-    //rand=4;
-    switch (rand) {
-        case 1:
-            selectedShape = <CapsuleShape textureUrl={randomUrl} />
-            break;
-        case 2:
-            selectedShape = <RectangularShape textureUrl={randomUrl} />
-            break;
-        case 3:
-            selectedShape = <Roundshape textureUrl={randomUrl} />
-            break;
-        case 4:
-            selectedShape = <OvalShape textureUrl={randomUrl} />
-            break;
-        default:
-            selectedShape = <Roundshape textureUrl={randomUrl} />
+    let bgstyle={
+        bg:{
+            background:'url('+{randomUrl}+')'
+        }
     }
+    let selectedShape = '';
+    //console.log(props.shape)
+    //rand=1;
+    // switch (rand) {
+    //     case 1:
+    //         selectedShape = <CapsuleShape textureUrl={randomUrl} texture={randomUrl} />
+    //         break;
+    //     case 2:
+    //         selectedShape = <RectangularShape textureUrl={randomUrl} />
+    //         break;
+    //     case 3:
+    //         selectedShape = <Roundshape textureUrl={randomUrl} />
+    //         break;
+    //     case 4:
+    //         selectedShape = <OvalShape textureUrl={randomUrl} />
+    //         break;
+    //     default:
+    //         selectedShape = <Roundshape textureUrl={randomUrl} />
+    // }
 
-
+    selectedShape=<Svgshape texture={randomUrl} />
 
     return (
 
@@ -73,7 +78,7 @@ const styles = {
     },
     pillanatomy: {
         position: "relative",
-        // height: "400px";
+         height: "160px",
         width:"300px"
     }
 }
