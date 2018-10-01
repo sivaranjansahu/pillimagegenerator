@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import Allshapes from '../svgobject/allshapes';
 import html2canvas from 'html2canvas';
 import axios, { post } from 'axios'
-
+import ReactDOM from 'react-dom'
 
 
 
@@ -12,10 +12,17 @@ class ImageGenerator extends Component {
         url: "/assets/textures/"
     }
 
-    componentDidUpdate() {
+    generateImage(){
         //calculate
         let textBb = document.querySelector('#imprint').getBoundingClientRect();
         let containerBb = document.querySelector('#pillcontainer').getBoundingClientRect();
+
+        let newbb = ReactDOM
+        .findDOMNode(this.refs['pillcontainer'])
+        .getBoundingClientRect()
+
+        console.log(newbb);
+
         let coordinatebj = [
             {
 
@@ -54,6 +61,13 @@ class ImageGenerator extends Component {
             post(url, formData, config)
         }.bind(this));
 
+    }
+
+    componentDidMount(){
+        this.generateImage();
+    }
+    componentDidUpdate() {
+        this.generateImage();
 
     }
 
@@ -78,7 +92,7 @@ class ImageGenerator extends Component {
     }
 
     render() {
-        return (<div>
+        return (<div ref='pillcontainer'>
 
             <Allshapes text={this.props.text} />
 
